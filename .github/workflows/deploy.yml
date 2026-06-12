@@ -37,7 +37,6 @@ jobs:
         echo "Usuario: ${{ secrets.GHCR_USER }}"
         echo "Puerto: ${{ secrets.GHCR_PORTVPS }}"
         echo "Password: ${{ secrets.GHCR_PASSWORD }}"
-        - name: 🧪 Probar conexión SSH
     - name: 🧪 Probar conexión SSH
       uses: appleboy/ssh-action@v1
       with:
