@@ -46,6 +46,4 @@ jobs:
         port: ${{ secrets.GHCR_PORTVPS }}
         script: |
           echo "✅ Conexión exitosa desde GitHub Actions"
-          hostname
-          whoami
-          uptime
+          touch ejemplo.txt
