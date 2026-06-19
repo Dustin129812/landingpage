@@ -1,6 +1,6 @@
 version: "3.9"
 
-service:
+services:
   paredes:
     image: ghcr.io/dustin129812/landingpage:1.0.0
     networks:
