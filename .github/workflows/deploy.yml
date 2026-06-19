@@ -46,7 +46,6 @@ jobs:
         port: ${{ secrets.GHCR_PORTVPS }}
         script: |
           echo "✅ Conexión exitosa desde GitHub Actions"
-          touch ejemplo.txt          
     - name: 🧪 Pasar los archivos desde git a VPS
       uses: appleboy/scp-action@v1
       with:
@@ -56,4 +55,16 @@ jobs:
         port: ${{ secrets.GHCR_PORTVPS }}
         source: "stack.yml,Makefile"
         target: "/home/${{secrets.GHCR_USER}}/landingc"
-          
+
+    - name: 🧪 Desplegando los servicios
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.GHCR_VPS }}
+        username: ${{ secrets.GHCR_USER }}
+        password: ${{ secrets.GHCR_PASSWORD }}
+        port: ${{ secrets.GHCR_PORTVPS }}
+        script: |
+          echo "✅  Desplegando los servicios"
+          cd ~/landingc
+          docker pull ghcr.io/dustin129812/landingpage:1.0.0
+          docker stack deploy -c stack.yml borrar

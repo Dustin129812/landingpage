@@ -1,1 +1,25 @@
 version: "3.9"
+
+service:
+  paredes:
+    image: ghcr.io/dustin129812/landingpage:1.0.0
+    networks:
+      - traefik-public
+    deploy: 
+      repicas: 1
+      lables: 
+        - "traefik.enable=true"
+        - "traefik.http.routers.paredes.entrypoints=http"
+        - "traefik.http.routers.paredes.rule=Host(paredes.byronrm.com)"
+        - "traefik.http.middlewares.paredes-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.paredes.middlewares=paredes-https-redirect"
+        - "traefik.http.routers.paredes-secure.entrypoints=https"
+        - "traefik.http.routers.paredes-secure.rule=Host(paredes.byronrm.com)"
+        - "traefik.http.routers.paredes-secure.tls=true"
+        - "traefik.http.routers.paredes-secure.tls.certresolver=http"
+        - "traefik.http.routers.paredes-secure.service=paredes"
+        - "traefik.http.services.paredes.loadbalancer.server.port=5000"
+        - "traefik.docker.network=traefik-public"
+  networks:
+    - traefik-public:
+      external: true
