@@ -20,6 +20,6 @@ services:
         - "traefik.http.routers.paredes-secure.service=paredes"
         - "traefik.http.services.paredes.loadbalancer.server.port=5000"
         - "traefik.docker.network=traefik-public"
-  networks:
-    - traefik-public:
-      external: true
+networks:
+  - traefik-public:
+    external: true
