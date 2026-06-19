@@ -21,5 +21,5 @@ services:
         - "traefik.http.services.paredes.loadbalancer.server.port=5000"
         - "traefik.docker.network=traefik-public"
 networks:
-  - traefik-public:
+  traefik-public:
     external: true
