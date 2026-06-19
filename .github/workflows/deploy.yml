@@ -46,4 +46,14 @@ jobs:
         port: ${{ secrets.GHCR_PORTVPS }}
         script: |
           echo "✅ Conexión exitosa desde GitHub Actions"
-          touch ejemplo.txt
+          touch ejemplo.txt          
+    - name: 🧪 Pasar los archivos desde git a VPS
+      uses: appleboy/scp-action@v1
+      with:
+        host: ${{ secrets.GHCR_VPS }}
+        username: ${{ secrets.GHCR_USER }}
+        password: ${{ secrets.GHCR_PASSWORD }}
+        port: ${{ secrets.GHCR_PORTVPS }}
+        source: "stack.yml,Makefile"
+        target: "/home/${{secrets.GHCR_USER}}/landingc"
+          
