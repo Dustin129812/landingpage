@@ -7,7 +7,7 @@ services:
       - traefik-public
     deploy: 
       repicas: 1
-      lables: 
+      labels: 
         - "traefik.enable=true"
         - "traefik.http.routers.paredes.entrypoints=http"
         - "traefik.http.routers.paredes.rule=Host(paredes.byronrm.com)"
