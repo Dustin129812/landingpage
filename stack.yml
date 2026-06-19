@@ -6,7 +6,7 @@ services:
     networks:
       - traefik-public
     deploy: 
-      repicas: 1
+      replicas: 1
       labels: 
         - "traefik.enable=true"
         - "traefik.http.routers.paredes.entrypoints=http"
