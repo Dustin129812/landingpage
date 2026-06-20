@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  paredes:
+  dustin:
     image: ghcr.io/dustin129812/landingpage:1.0.0
     networks:
       - traefik-public
@@ -9,16 +9,16 @@ services:
       replicas: 1
       labels: 
         - "traefik.enable=true"
-        - "traefik.http.routers.paredes.entrypoints=http"
-        - "traefik.http.routers.paredes.rule=Host(paredes.byronrm.com)"
-        - "traefik.http.middlewares.paredes-https-redirect.redirectscheme.scheme=https"
-        - "traefik.http.routers.paredes.middlewares=paredes-https-redirect"
-        - "traefik.http.routers.paredes-secure.entrypoints=https"
-        - "traefik.http.routers.paredes-secure.rule=Host(paredes.byronrm.com)"
-        - "traefik.http.routers.paredes-secure.tls=true"
-        - "traefik.http.routers.paredes-secure.tls.certresolver=http"
-        - "traefik.http.routers.paredes-secure.service=paredes"
-        - "traefik.http.services.paredes.loadbalancer.server.port=5000"
+        - "traefik.http.routers.dustin.entrypoints=http"
+        - "traefik.http.routers.dustin.rule=Host(dustin.byronrm.com)"
+        - "traefik.http.middlewares.dustin-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.dustin.middlewares=dustin-https-redirect"
+        - "traefik.http.routers.dustin-secure.entrypoints=https"
+        - "traefik.http.routers.dustin-secure.rule=Host(dustin.byronrm.com)"
+        - "traefik.http.routers.dustin-secure.tls=true"
+        - "traefik.http.routers.dustin-secure.tls.certresolver=http"
+        - "traefik.http.routers.dustin-secure.service=dustin"
+        - "traefik.http.services.dustin.loadbalancer.server.port=5000"
         - "traefik.docker.network=traefik-public"
 networks:
   traefik-public:
